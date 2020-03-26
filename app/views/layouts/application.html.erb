@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sample</title>
+    <title>SCUBACITY</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,8 @@
   </head>
 
   <body>
+
+    <li class="nav-list-item"><%= link_to destroy_user_session_path, method: :delete do %>LOG OUT<%end%>
     <%= yield %>
   </body>
 </html>
