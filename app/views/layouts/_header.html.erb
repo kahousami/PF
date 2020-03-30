@@ -1,0 +1,18 @@
+<header>
+  <h1 class="headline">
+     <%= link_to 'SCUBACITY', root_path %>
+  </h1>
+
+  <dir class="user_status">
+    <% if user_signed_in? %>
+      <ul class="nav-list">
+         <li class="nav-list-item"><%= link_to destroy_user_session_path, method: :delete do %>LOG OUT<%end%></li>
+      </ul>
+    <% else %>
+      <ul class="nav-list">
+        <li class="nav-list-item"><%= link_to new_user_session_path do%>LOG IN<%end%></li>
+        <li class="nav-list-item"><%= link_to new_user_registration_path do%>SIGN UP<%end%></li>
+      </ul>
+    <% end %>
+  </dir>
+</header>

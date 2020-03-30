@@ -7,11 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700" rel="stylesheet">  </head>
 
   <body>
 
-    <li class="nav-list-item"><%= link_to destroy_user_session_path, method: :delete do %>LOG OUT<%end%>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/headerlists' %>
+
     <%= yield %>
   </body>
 </html>

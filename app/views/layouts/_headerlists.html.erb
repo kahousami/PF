@@ -1,0 +1,27 @@
+<!-- ヘッダーリスト -->
+<% if user_signed_in? %>
+  <nav>
+    <ul class="nav-list">
+      <li class="nav-list-item">
+        <%= link_to root_path do %>Home<% end %>
+      </li>
+      <li class="nav-list-item">
+        About
+      </li>
+      <li class="nav-list-item">
+        <%= link_to user_path(current_user) do %>My Page<% end %>
+      </li>
+    </ul>
+  </nav>
+<% else %>
+  <nav>
+    <ul class="nav-list">
+      <li class="nav-list-item">
+        <%= link_to root_path do %>Home<% end %>
+      </li>
+      <li class="nav-list-item">
+        About
+      </li>
+    </ul>
+  </nav>
+<% end %>

@@ -27,3 +27,8 @@
 
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/11eA4h9fh4qzMyMdXqwEQxtNjUisjK6kHOnTwVlSJ1eU/edit#gid=0>
+
+### 写真素材提供先
+サイト名　沖縄ダイビングライセンス・ワールドダイビング　
+URL <https://www.owd.jp/>
+
