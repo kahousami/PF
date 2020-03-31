@@ -11,27 +11,29 @@
           <% @posts.each do |post| %>
             <div class="mypost-box">
               <div class="mypost-item clearfix">
-                <div class="mypost-image">
-                  <%= link_to post_path(post.id) do %>
-                    <%= attachment_image_tag post, :image, :fill, 200, 200 %>
-                  <% end %>
+                <div class="mypost-left">
+                  <div class="mypost-image">
+                    <%= link_to post_path(post.id) do %>
+                      <%= attachment_image_tag post, :image, :fill, 250, 200 %>
+                    <% end %>
+                  </div>
+                  <p class="mypost-title">
+                    <%= link_to post_path(post.id) do %>
+                      <i class="fa fa-map-marker"></i><%= post.dive_point %>
+                    <% end %>
+                  </p>
                 </div>
 
               <div class="mypost-content">
-                <h4 class="mypost-title">
-                  <%= link_to post_path(post.id) do %>
-                  <i class="fa fa-map-marker"></i><%= post.dive_point %>
-                  <% end %>
-                </h4>
                 <p class="mypost-caption"><%= post.caption %></p>
                 <ul class="inline-meta">
-                  <li>By
-                    <%= post.user.name %>
+                  <li>
+                    <%= post.created_at.strftime('%Y/%m/%d') %>
                   </li>
                   <li>
                     <i class="fa fa-comment"></i>
                     <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
-                  </li>
+                    <%= render 'layouts/favorites', post: post %>
                 </ul>
               </div>
             </div>

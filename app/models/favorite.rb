@@ -1,7 +1,7 @@
 class Favorite < ApplicationRecord
 	belongs_to :user
     belongs_to :post
-    def favorited_by?(user)
-      favorites.where(user_id: user.id).exists?
-    end
+
+    # 1User1いいねにする
+    validates_uniqueness_of :post_id, scope: :user_id
 end

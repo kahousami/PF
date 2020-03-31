@@ -32,7 +32,7 @@ ul {
   display: block;
   clear: both;
 }
-header, nav, .main-visual, .mypost_headline {
+header, nav, .main-visual, .mypost_headline, .posts_headline {
   font-family: 'Amatic SC', cursive;
   color: #6c6b6b;
 }
@@ -98,6 +98,8 @@ header .headline{
 }
 
 
+
+// user#show
 .mypost {
   width: 540px;
   float: left;
@@ -116,26 +118,49 @@ header .headline{
   margin-bottom: 20px;
   border-bottom: 1px solid #f7f7f7;
 }
-.mypost-image {
+.mypost-left {
   float: left;
   width: 280px;
   background-position: center;
   background-size: cover;
-  height: 180px;
 }
 .mypost-content {
   float: left;
-  padding-top: 30px;
   width: calc(100% - 280px);
 }
 .mypost-caption {
 	word-wrap: break-word;
 }
-.category {
-  display: inline-block;
-  padding: 5px 8px;
-  background-color: #acabab;
-  border-radius: 3px;
-  color: #fff;
-  font-size: 11px;
+
+// post#index
+.posts {
+  width: 540px;
+  float: left;
+  margin-left: 20px;
+}
+.posts_headline {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+.posts-box {
+  padding-top: 50px;
+}
+.posts-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f7f7f7;
+}
+.posts-left {
+  float: left;
+  width: 280px;
+  background-position: center;
+  background-size: cover;
+}
+.posts-content {
+  float: left;
+  width: calc(100% - 280px);
+}
+.posts-caption {
+  word-wrap: break-word;
 }

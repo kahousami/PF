@@ -1,38 +1,48 @@
+<main class="clearfix">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-sm-offset-2">
 
+      <%#= render 'layouts/sidebar' %>
+
+        <section class="posts">
+          <h2 class="posts_headline">All Posts</h2>
           <% @posts.each do |post| %>
 
-            <div class="block-image">
-              <div class="view view-first">
-                <%= link_to post_path(post.id) do %>
-                  <%= attachment_image_tag post, :image, :fill, 200, 200 %>
-                <% end %>
+            <div class="posts-box">
+              <div class="posts-item clearfix">
+                <div class="posts-left">
+                  <div class="posts-image">
+                    <%= link_to post_path(post.id) do %>
+                      <%= attachment_image_tag post, :image, :fill, 250, 200 %>
+                    <% end %>
+                  </div>
+                  <p class="posts-title">
+                    <%= link_to post_path(post.id) do %>
+                      <i class="fa fa-map-marker"></i><%= post.dive_point %>
+                    <% end %>
+                  </p>
+                </div>
+
+              <div class="posts-content">
+                <p class="posts-caption"><%= post.caption %></p>
+                <ul class="inline-meta">
+                  <li>By
+                    <%= post.user.name %>
+                  </li>
+                  <li>
+                    <%= post.created_at.strftime('%Y/%m/%d') %>
+                  </li>
+                  <li>
+                    <i class="fa fa-comment"></i>
+                    <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
+                    <%= render 'layouts/favorites', post: post %>
+                </ul>
               </div>
             </div>
 
-            <div class="block-content">
-              <%#= image_tag(class: "img-circle pull-left profile-thumb") %>
-              <h3 class="block-title">
-                <%= link_to post_path(post.id) do %>
-                <i class="fa fa-map-marker"></i><%= post.dive_point %>
-                <% end %>
-              </h3>
-              <p><%= post.caption %></p>
-              <ul class="inline-meta">
-                <li>By
-                  <%= post.user.name %>
-                </li>
-                <li>
-                  <i class="fa fa-comment"></i>
-                  <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
-                </li>
-              </ul>
-            </div>
-
           <% end %>
+        </section>
 
-      </div>
     </div>
   </div>
+</main>
