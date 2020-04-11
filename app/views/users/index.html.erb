@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+
+			<section class="users">
+
+				<h2 class="users_headline">All Users</h2>
+
+				<% @users.each do |user| %>
+					<div class="user-box">
+						<div class="user-item clearfix">
+							<p><%= attachment_image_tag user, :profile_image, :fill, 150, 150, class: "img-circle", fallback: "noimage.jpg", size: '150x150' %></p>
+							<p>Name：<%= link_to user.name, user_path(user) %></p>
+							<p>投稿件数：<%= link_to user.posts.count, user_path(user) %>件</p>
+						</div>
+					</div>
+				<% end %>
+
+			</section>
+
+		</div>
+	</div>
+</div>

@@ -32,11 +32,13 @@ ul {
   display: block;
   clear: both;
 }
-header, nav, .main-visual, .mypost_headline, .posts_headline {
+header, nav, .main-visual, h2 {
   font-family: 'Amatic SC', cursive;
   color: #6c6b6b;
 }
 
+
+// header
 header {
   position: relative;
   width: 90%;
@@ -44,11 +46,9 @@ header {
   margin: 0 auto;
   text-align: center;
 }
-
 header .headline{
   font-size: 45px;
 }
-
 .user_status {
   position: absolute;
   top: 22px;
@@ -59,12 +59,11 @@ header .headline{
   display: inline-block;
   margin-left: 20px;
 }
-
 .main-visual {
   width: 100%;
   height: 400px;
   margin-bottom: 20px;
-  background-image: image-url(02.jpg);
+  background-image: image-url("02.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -84,7 +83,6 @@ header .headline{
   margin-top: 30px;
   font-size: 25px;
 }
-
 .nav-list {
   text-align: center;
   padding: 10px 0;
@@ -98,10 +96,47 @@ header .headline{
 }
 
 
+// sidebar
+.sidebar_box{
+  margin:30px 0;
+  position: relative;
+  padding: 10px;
+  border-top: solid 6px #f7f7f7;
+  border-bottom: solid 6px #f7f7f7;
+}
+.sidebar_box:before, .sidebar_box:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: #f7f7f7;
+}
+.sidebar_box:before {
+  left: 10px;
+}
+.sidebar_box:after {
+  right: 10px;
+  }
+.sidebar_box p {
+    margin: 0;
+    padding: 15px;
+}
+.sidebar_position {
+  text-align: center;
+}
+.profile_headline {
+  display: inline-block;
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+
 
 // user#show
 .mypost {
-  width: 540px;
+  width: 700px;
   float: left;
   margin-left: 30px;
 }
@@ -132,9 +167,15 @@ header .headline{
 	word-wrap: break-word;
 }
 
-// post#index
+// top
+.recentposts-content {
+  word-wrap: break-word;
+}
+
+
+// posts#index
 .posts {
-  width: 540px;
+  width: 700px;
   float: left;
   margin-left: 20px;
 }
@@ -163,4 +204,52 @@ header .headline{
 }
 .posts-caption {
   word-wrap: break-word;
+}
+
+// users#show
+.recentpost-headline{
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+.resentposts-box {
+  width: 220px;
+  float: left;
+  margin-left: 30px;
+}
+.post-date {
+  text-align: right;
+}
+
+
+// users#edit
+.form-header-title {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+.user-edit-image {
+  text-align: center;
+  padding: 20px 0;
+}
+
+//
+.users_headline{
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+
+// user#index
+.user-box {
+  width: 220px;
+  float: left;
+  margin-left: 30px;
+}
+
+// follow
+.follow_headline {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
 }

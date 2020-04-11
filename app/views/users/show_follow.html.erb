@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+
+			<h2 class="follow_headline">Followings</h2>
+			<% @user.followings.each do |user| %>
+				<table>
+					<tr>
+						<td>
+							<%= attachment_image_tag user, :profile_image, :fill, 100, 100, class: "img-circle", fallback: "noimage.jpg", size: '100x100' %><br>
+							<%= user.name %>
+							<%= link_to '詳細', user_path(user) %>
+						</td>
+					</tr>
+				</table>
+			<% end %>
+
+		</div>
+	</div>
+</div>

@@ -9,14 +9,14 @@
 
 		  <div class="post-content">
 		    <p class="post-title">
-          <i class="fa fa-map-marker"></i>
+          <i class="glyphicon glyphicon-map-marker"></i>
           <%= @post.dive_point %>
         </p>
 
 		    <ul class="float-wrapper">
 		      <li>
 		        <i class="fa fa-user"></i> By<a href="#">
-		          <%= @post.user.name %></a>
+		          <%= link_to @post.user.name, user_path(@post.user) %></a>
 		      </li>
 		      <li>
 		        <i class="fa fa-calendar"></i> <%= @post.created_at.strftime('%Y/%m/%d') %>
@@ -25,7 +25,7 @@
           <%= render 'layouts/favorites', post: @post %>
 
           <li>
-            <i class="fa fa-comment"></i>
+            <i class="glyphicon glyphicon-comment"></i>
             <a href="#comments"><%= @post.post_comments.count %></a>
           </li>
 
@@ -52,15 +52,10 @@
         <ol>
           <% @post.post_comments.each do |post_comment| %>
             <li class="comment">
-              <div class="comment-body bb">
-                <div class="comment-avatar">
-                  <div class="avatar">
-                    <%#= 投稿者の写真いれる予定 %>
-                  </div>
-                </div>
+              <div class="comment-body">
                 <div class="comment-text">
                   <div class="comment-author clearfix">
-                    <a href="#" class="link-author"><%= post_comment.user.name %></a>
+                    <%= link_to post_comment.user.name, user_path(post_comment.user) %>
                     <span class="comment-meta">
                       <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
                     </span>

@@ -12,38 +12,40 @@
     </div>
 </div>
 
+<!-- Recent Posts -->
 <div class="container">
     <div class="row">
-      	<div class="col-md-8 col-sm-offset-2">
+      	<div class="col-md-8 col-md-offset-2">
 
-          <h2>Recent Post</h2>
+          <h2 class="recentpost-headline" >Recent Post</h2>
           <% @posts.each do |post| %>
-            <div class="block-image">
-              <div class="view view-first">
-                <%= link_to post_path(post.id) do %>
-                  <%= attachment_image_tag post, :image, :fill, 200, 200 %>
-                <% end %>
-              </div>
-            </div>
+          <div class="resentposts-box">
+            <div class="posts-item clearfix">
+              <%= link_to post_path(post.id) do %>
+                <%= attachment_image_tag post, :image, :fill, 200, 200 %>
+              <% end %>
 
-            <div class="block-content">
-              <%#= image_tag(class: "img-circle pull-left profile-thumb") %>
-              <h4 class="block-title">
-                <%= link_to post_path(post.id) do %>
-                <i class="fa fa-map-marker"></i><%= post.dive_point %>
-                <% end %>
-              </h4>
-              <p><%= post.caption %></p>
-              <ul class="inline-meta">
-                <li>By
-                  <%= post.user.name %>
-                </li>
-                <li>
-                  <i class="fa fa-comment"></i>
-                  <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
-                </li>
-              </ul>
+              <div class="recentposts-content">
+                <p class="recentposts-deive_point">
+                  <%= link_to post_path(post.id) do %>
+                    <i class="glyphicon glyphicon-map-marker"></i><%= post.dive_point %>
+                  <% end %>
+                </p>
+                <p><%= post.caption %></p>
+                <ul class="inline-meta">
+                  <li>Posted by
+                    <%= link_to post.user.name, user_path(post.user) %>
+                  </li>
+                  <li>
+                    <p><%= render 'layouts/favorites', post: post %>
+                    <i class="glyphicon glyphicon-comment"></i>
+                    <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %></p>
+                  </li>
+                </ul>
+              </div>
+
             </div>
+          </div>
           <% end %>
 
       	</div>

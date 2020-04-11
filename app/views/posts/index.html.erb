@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
 
-      <%#= render 'layouts/sidebar' %>
+      <div class="col-sm-8">
 
         <section class="posts">
           <h2 class="posts_headline">All Posts</h2>
@@ -18,7 +18,7 @@
                   </div>
                   <p class="posts-title">
                     <%= link_to post_path(post.id) do %>
-                      <i class="fa fa-map-marker"></i><%= post.dive_point %>
+                      <i class="glyphicon glyphicon-map-marker"></i><%= post.dive_point %>
                     <% end %>
                   </p>
                 </div>
@@ -26,23 +26,29 @@
               <div class="posts-content">
                 <p class="posts-caption"><%= post.caption %></p>
                 <ul class="inline-meta">
-                  <li>By
-                    <%= post.user.name %>
+                  <li>Posted by
+                    <%= link_to post.user.name, user_path(post.user) %>
                   </li>
                   <li>
                     <%= post.created_at.strftime('%Y/%m/%d') %>
                   </li>
                   <li>
-                    <i class="fa fa-comment"></i>
-                    <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
                     <%= render 'layouts/favorites', post: post %>
+                    <i class="glyphicon glyphicon-comment"></i>
+                    <%= link_to "#{post.post_comments.count} コメント", post_path(post.id) %>
+                  </li>
                 </ul>
               </div>
             </div>
 
           <% end %>
         </section>
+      </div>
 
+      <div class="col-sm-4">
+        <%= render 'layouts/sidebar', user: current_user %>
+        <%= link_to "新規投稿", new_post_path, class: "glyphicon glyphicon-plus" %>
+      </div>
     </div>
   </div>
 </main>

@@ -1,0 +1,56 @@
+<% if user_signed_in? %>
+
+	<div class="sidebar_box">
+		<div class="sidebar_position">
+
+			<h2 class="profile_headline"> Profile </h2>
+			<P><%= attachment_image_tag user, :profile_image, :fill, 150, 150, class: "img-circle", fallback: "noimage.jpg", size: '150x150' %></P>
+
+			<p>ユーザー名：<strong><%= user.name %></strong></p>
+
+			<p>投稿件数：<%= user.posts.count %>件</p>
+
+			<p>フォロー数：<%= link_to user.followings.count, following_user_path(user) %></p>
+
+			<p>フォロワー数：<%= link_to user.followers.count, followers_user_path(user) %></p>
+
+			<% if user.id == current_user.id %>
+				<p><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-primary" %></p>
+			<% else %>
+    			<%= render 'relationships/follow_form', user: @user %>
+			<% end %>
+
+		</div>
+
+	</div>
+
+<% else %>
+
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		<%= render "devise/shared/error_messages", resource: resource %>
+		<div class="form-group">
+			<%= f.label :名前 %><br />
+			<%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :email %><br />
+			<%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :パスワード %>
+			<% if @minimum_password_length %>
+			<em>（<%= @minimum_password_length %> 文字以上）</em>
+			<% end %><br />
+			<%= f.password_field :password, autocomplete: "new-password" %>
+		</div>
+		<div class="form-group">
+			<%= f.label :パスワード（確認） %><br />
+			<%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+		</div>
+		<div class="actions">
+			<%= f.submit "SCUBACITYに参加する", class:"btn btn-primary" %>
+		</div>
+	<% end %>
+	<%= render "devise/shared/links" %>
+
+<% end %>
