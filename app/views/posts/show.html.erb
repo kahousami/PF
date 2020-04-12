@@ -13,10 +13,10 @@
           <%= @post.dive_point %>
         </p>
 
-		    <ul class="float-wrapper">
+		    <ul>
 		      <li>
-		        <i class="fa fa-user"></i> By<a href="#">
-		          <%= link_to @post.user.name, user_path(@post.user) %></a>
+		        <i class="fa fa-user"></i> Posted by
+		          <%= link_to @post.user.name, user_path(@post.user) %>
 		      </li>
 		      <li>
 		        <i class="fa fa-calendar"></i> <%= @post.created_at.strftime('%Y/%m/%d') %>
@@ -44,36 +44,24 @@
       <hr>
 
       <!-- コメント一覧表示 -->
-      <div class="comment-list bt style-2" id="comments">
-        <div class="float-wrapper">
-          <h4 class="comment-count"><%= @post.post_comments.count %>件コメント</h4>
-        </div>
+      <h4 class="comment-count"><%= @post.post_comments.count %>件コメント</h4>
 
-        <ol>
-          <% @post.post_comments.each do |post_comment| %>
-            <li class="comment">
-              <div class="comment-body">
-                <div class="comment-text">
-                  <div class="comment-author clearfix">
-                    <%= link_to post_comment.user.name, user_path(post_comment.user) %>
-                    <span class="comment-meta">
-                      <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
-                    </span>
-                  </div>
-                  <div class="comment-entry"><%= post_comment.comment %></div>
-                </div>
-              </div>
-            </li>
-          <% end %>
-        </ol>
-      </div>
+      <ol>
+        <% @post.post_comments.each do |post_comment| %>
+          <li class="comment">
+            <div class="comment-author clearfix">
+              <%= link_to post_comment.user.name, user_path(post_comment.user) %>
+              <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+            </div>
+            <div class="comment-entry"><%= post_comment.comment %></div>
+          </li>
+        <% end %>
+      </ol>
 
       <hr>
 
       <!-- コメント投稿 -->
-      <div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
-        <h3 class="section-title left"><span>コメント</span></h3>
-      </div>
+      <h3 class="section-title left"><span>コメント</span></h3>
 
       <%= form_for [@post, @post_comment] do |f| %>
         <div class="row">
