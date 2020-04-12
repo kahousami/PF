@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :login_check, only: [:new, :show, :index, :edit, :update, :destroy]
+
   def show
   	@user = User.find(params[:id])
   	@posts = @user.posts.page(params[:page]).per(10).reverse_order
@@ -34,5 +36,12 @@ class UsersController < ApplicationController
   private
   def user_params
   	params.require(:user).permit(:name, :email, :profile_image)
+  end
+
+  def login_check
+  unless user_signed_in?
+    flash[:alert] = "ログインしてください"
+    redirect_to root_path
+  end
   end
 end

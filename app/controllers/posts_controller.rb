@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+    before_action :login_check, only: [:new, :index, :edit, :update, :destroy]
+
     def new
     	@post = Post.new
     end
@@ -36,6 +38,13 @@ class PostsController < ApplicationController
     private
     def post_params
     	params.require(:post).permit(:dive_point, :image, :caption, :user_id)
+    end
+
+    def login_check
+        unless user_signed_in?
+            flash[:alert] = "ログインしてください"
+            redirect_to root_path
+        end
     end
 
 end
