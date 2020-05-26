@@ -1,26 +1,22 @@
-<% if user_signed_in? %>
+<div class="sidebar_box">
+	<div class="sidebar_position">
 
-	<div class="sidebar_box">
-		<div class="sidebar_position">
+		<h2 class="profile_headline"> Profile </h2>
+		<P><%= attachment_image_tag user, :profile_image, :fill, 150, 150, class: "img-circle", fallback: "noimage.jpg", size: '150x150' %></P>
 
-			<h2 class="profile_headline"> Profile </h2>
-			<P><%= attachment_image_tag user, :profile_image, :fill, 150, 150, class: "img-circle", fallback: "noimage.jpg", size: '150x150' %></P>
+		<p>ユーザー名：<strong><%= user.name %></strong></p>
 
-			<p>ユーザー名：<strong><%= user.name %></strong></p>
+		<p>投稿件数：<%= user.posts.count %>件</p>
 
-			<p>投稿件数：<%= user.posts.count %>件</p>
+		<p>フォロー数：<%= link_to user.followings.count, following_user_path(user) %></p>
 
-			<p>フォロー数：<%= link_to user.followings.count, following_user_path(user) %></p>
+		<p>フォロワー数：<%= link_to user.followers.count, followers_user_path(user) %></p>
 
-			<p>フォロワー数：<%= link_to user.followers.count, followers_user_path(user) %></p>
+		<% if user.id == current_user.id %>
+			<p><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-primary" %></p>
+		<% else %>
+    		<%= render 'relationships/follow_form', user: @user %>
+		<% end %>
 
-			<% if user.id == current_user.id %>
-				<p><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-primary" %></p>
-			<% else %>
-    			<%= render 'relationships/follow_form', user: @user %>
-			<% end %>
-
-		</div>
 	</div>
-
-<% end %>
+</div>

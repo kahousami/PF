@@ -21,7 +21,9 @@
       </div>
 
       <div class="col-sm-4">
-        <%= render 'layouts/sidebar', user: @user %>
+        <% if user_signed_in? %>
+          <%= render 'layouts/sidebar', user: @user %>
+        <% end %>
         <%= link_to "新規投稿", new_post_path, class: "glyphicon glyphicon-plus" %>
       </div>
     <% end %>
