@@ -70,7 +70,7 @@ gem "refile-mini_magick"
 # ページネーション機能
 gem 'kaminari'
 
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'
 
 # デプロイ
