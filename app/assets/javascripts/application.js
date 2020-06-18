@@ -15,3 +15,29 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+document.addEventListener("turbolinks:load", function() {
+
+// back to top
+$(document).ready(function(){
+    // ボタンがフェードインするように
+    $(function () {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#back').fadeIn();
+            } else {
+                $('#back').stop(true, true).fadeOut();
+            }
+        });
+        // スクロールでページトップへ戻るように
+        $('#back a').click(function () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+    });
+});
+
+})
